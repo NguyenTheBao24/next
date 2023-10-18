@@ -11,14 +11,21 @@ function Header() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+        <Link href={"/"} className="navbar-brand">
+        React-Bootstrap
+        </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">
-              Home
-            </Nav.Link>
-            <Nav.Link href="/">Link</Nav.Link>
+           <Link href={"/fb"} className="nav-link">
+           fb
+           </Link>
+           <Link href={"/tiktok"}  className="nav-link">
+           tiktok
+           </Link>
+           <Link href={"/yt"}  className="nav-link">
+           yt
+           </Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
