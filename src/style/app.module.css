@@ -1,0 +1,16 @@
+
+
+.red{
+    color: red;
+    margin-top: 20px;
+}
+.link{
+    text-decoration: none;
+    color: aliceblue;
+}
+.footer{
+    text-align: center;
+    width: 100%Ư;
+    background-color: antiquewhite;
+    padding: 10px 0;
+}

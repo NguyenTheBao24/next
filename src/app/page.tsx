@@ -1,23 +1,23 @@
-import Image from 'next/image'
+"use client";
+import Tables from "@/componment/app.table";
+import Link from "next/link";
 
 export default function Home() {
   return (
-  <div>
-    <ul>
-      <li><a href="/fb">
-        fb
-        </a></li>
-      <li>
-        <a href="/yt">
-          yt
-        </a>
-      </li>
-      <li>
-        <a href="/tiktok">
-          tiktok
-        </a>
-      </li>
-    </ul>
-  </div>
-  )
+    <>
+      <ul>
+        <li>
+          <Link href={"/fb"}>fb</Link>
+        </li>
+        <li>
+          <Link href={"/yt"}>yt</Link>
+        </li>
+        <li>
+          <Link href={"/tiktok"}>tiktok</Link>
+        </li>
+      </ul>
+
+      <Tables></Tables>
+    </>
+  );
 }
