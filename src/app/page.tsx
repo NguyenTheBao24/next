@@ -20,6 +20,9 @@ export default function Home() {
     }
   );
 
+
+  
+
   const count = useSelector<RootState>((state) => state.blogReducer);
   const dispatch = useDispatch<AppDispatch>();
   const onClick = () => {
@@ -28,7 +31,7 @@ export default function Home() {
 
 
 
-    
+
   };
   console.log(count);
   console.log(data);
