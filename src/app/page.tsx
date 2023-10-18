@@ -24,6 +24,11 @@ export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
   const onClick = () => {
     dispatch(addBlog(data[0]));
+
+
+
+
+    
   };
   console.log(count);
   console.log(data);
