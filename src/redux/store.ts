@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import blogReducer from "./blog/dataBlog";
-import { type } from "os";
+import creatmodalReducer from './creatmodal/creatmodal'
 
 export const store = configureStore({
   reducer: {
      blogReducer,
+     creatmodalReducer,
   },
 });
 

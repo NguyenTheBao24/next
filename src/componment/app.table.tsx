@@ -1,38 +1,50 @@
-' use client'
-import Table from 'react-bootstrap/Table';
-
-import stype from '../style/app.module.css'
+" use client";
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/esm/Button";
+import stype from "../style/app.module.css";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { useState } from "react";
 
 function Tables() {
+  const [isView, setIsView] = useState(false);
+  const blog = useSelector((state: RootState) => state.blogReducer);
+  console.log(blog);
+
+  const handlIsView = () => {
+    setIsView(!isView);
+  };
+
   return (
-    <Table striped bordered hover className={stype['red']}>
+    <Table striped bordered hover className={stype["red"]}>
       <thead>
         <tr>
-          <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>NO</th>
+          <th>author</th>
+          <th>title</th>
+          {isView && <th> conten</th>}
+
+          <th> Action </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td >Larry the Bird</td>
-          <td> Thế Bảo</td>
-          <td>@twitter</td>
-        </tr>
+        {blog.map((blog, index) => (
+          <tr key={index}>
+            <td>{blog.id}</td>
+            <td>{blog.author}</td>
+            <td>{blog.title}</td>
+            {isView && <td>{blog.content}</td>}
+            <td style={{ display: "flex" }}>
+              <Button variant={"primary"} onClick={handlIsView}>
+                View
+              </Button>
+              <Button variant={"warning"} className="mx-3">
+                Edit{" "}
+              </Button>
+              <Button variant={"danger"}>Delete</Button>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </Table>
   );

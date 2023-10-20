@@ -1,50 +1,19 @@
-import { createSlice,PayloadAction } from "@reduxjs/toolkit";
-import { type } from "os";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// type initialState ={
-//   value:BlogState;
-// }
-
-type BlogState ={
-  id:number,
-  author:string,
-  content:string,
-  title:string
-}
-const dataBlog = {
-  
-
-    id: 0,
-    author: '',
-    content: '',
-    title: '',
-  
-} as BlogState
-
-
+const dataBlog :BlogState[]=[];
 
 export const blog = createSlice({
   name: "blog",
-  initialState:dataBlog ,
+  initialState: dataBlog,
   reducers: {
-    addBlog:(state, action:PayloadAction<BlogState>)=>{
-        state.id=action.payload.id;
-        state.author = action.payload.author;
-        state.content = action.payload.content;
-        state.title= action.payload.title;
-
-
+    addBlog: (state, action: PayloadAction<BlogState[]>) => {
+      const isCheck = state.some((blog)=> blog.id === action.payload[0].id);
+      if(!isCheck) state.push(...action.payload);
     },
-    outBlog:()=>{
-
+    outBlog: () => {
       return dataBlog;
-    }
-
-
-    
+    },
   },
 });
-export const {outBlog, addBlog} = blog.actions;
+export const { outBlog, addBlog } = blog.actions;
 export default blog.reducer;
-
-

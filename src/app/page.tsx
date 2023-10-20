@@ -6,9 +6,13 @@ import Button from "react-bootstrap/esm/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { addBlog } from "@/redux/blog/dataBlog";
 import { AppDispatch, RootState } from "@/redux/store";
+import Creatmodal from "@/componment/creat.modal";
+import { close, view } from "@/redux/creatmodal/creatmodal";
 
 export default function Home() {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
+  const isShow = useSelector((state: RootState) => state.creatmodalReducer);
+  console.log(isShow);
 
   const { data, error, isLoading } = useSWR(
     "http://localhost:8000/blogs",
@@ -20,21 +24,14 @@ export default function Home() {
     }
   );
 
-
-  
-
-  const count = useSelector<RootState>((state) => state.blogReducer);
   const dispatch = useDispatch<AppDispatch>();
   const onClick = () => {
-    dispatch(addBlog(data[0]));
-
-
-
-
-
+    dispatch(addBlog(data));
+    // dispatch(close())
   };
-  console.log(count);
-  console.log(data);
+  const hanldShowCreatModal= ()=>{
+    dispatch(view())
+  }
 
   return (
     <>
@@ -53,8 +50,13 @@ export default function Home() {
       <Button variant="primary" onClick={onClick}>
         thêm
       </Button>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <h3>table</h3>
+        <Button onClick={hanldShowCreatModal} variant="secondary">Addnew</Button>
+      </div>
 
       <Tables></Tables>
+      <Creatmodal></Creatmodal>
     </>
   );
 }
