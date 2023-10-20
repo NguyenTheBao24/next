@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { mutate } from "swr";
 
 function Creatmodal() {
   const isShow = useSelector((state: RootState) => state.creatmodalReducer);
@@ -42,6 +43,7 @@ function Creatmodal() {
         .then((res) => res.json())
         .then((res) => {
           toast.success("ban da them thanh cong");
+          mutate("http://localhost:8000/blogs");
           dispatch(close());
         });
     }

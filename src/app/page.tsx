@@ -23,15 +23,12 @@ export default function Home() {
       revalidateOnReconnect: false,
     }
   );
-
   const dispatch = useDispatch<AppDispatch>();
-  const onClick = () => {
-    dispatch(addBlog(data));
-    // dispatch(close())
+  dispatch(addBlog(data));
+
+  const hanldShowCreatModal = () => {
+    dispatch(view());
   };
-  const hanldShowCreatModal= ()=>{
-    dispatch(view())
-  }
 
   return (
     <>
@@ -47,12 +44,11 @@ export default function Home() {
         </li>
       </ul>
 
-      <Button variant="primary" onClick={onClick}>
-        thêm
-      </Button>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <h3>table</h3>
-        <Button onClick={hanldShowCreatModal} variant="secondary">Addnew</Button>
+        <Button onClick={hanldShowCreatModal} variant="secondary">
+          Addnew
+        </Button>
       </div>
 
       <Tables></Tables>

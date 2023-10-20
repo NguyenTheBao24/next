@@ -2,15 +2,15 @@
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/esm/Button";
 import stype from "../style/app.module.css";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
-import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState, AppDispatch } from "@/redux/store";
+import { useEffect, useState } from "react";
 
 function Tables() {
   const [isView, setIsView] = useState(false);
   const blog = useSelector((state: RootState) => state.blogReducer);
-  console.log(blog);
 
+  
   const handlIsView = () => {
     setIsView(!isView);
   };
